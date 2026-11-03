@@ -1,11 +1,11 @@
-# Java 17 on ArcaOS through Odin32 (release 17a1)
+# Java 17 and 21 on ArcaOS through Odin32 (release 17a2)
 
 Runs **Temurin 17.0.17** (the 32-bit Windows x86 build of OpenJDK 17) on ArcaOS using
 Odin32's PE loader (`pec.exe` / `pe.exe`). No port of the JVM itself; Odin provides the Win32 API.
 Status: works for headless programs, servers, TLS and Swing windows, with the gaps listed below.
 
 ## Requirements
-* **Odin 0.9.1a2 or newer** (new kernel32 APIs, completion ports, memory-map and file fixes, `ws2_32` name
+* **Odin 0.9.1a3 or newer** (0.9.1a2 is enough for JDK 17 only) (new kernel32 APIs, completion ports, memory-map and file fixes, `ws2_32` name
   resolution, new `POWRPROF`, `WINHTTP`, `MSWSOCK` DLLs). Odin 0.9.0 and 0.9.1a1 will not start Java 17.
 * Temurin 17 x86-32 zip, from Adoptium (`OpenJDK17U-jdk_x86-32_windows_hotspot_17.0.17_10.zip`,
   SHA-256 `34ecb7e53b87ecb288be113ad1c76f3e55e7dc2f2b32427605e356feac95cb74`).
@@ -49,7 +49,21 @@ quoted arguments and keytool work from the command line. Settings: `JAVA17_HOME`
 launcher's directory if it has `bin\java.exe`, else `C:\Java17\jdk-17.0.17+10`), `ODIN_DIR`. Verified in the VM
 (`-Dx=hello`, `"a b"` argument, javac). Launchers need not live in the JDK; `JAVA17_HOME` locates it.
 
+## Java 21 (BellSoft Liberica)
+
+Adoptium (Temurin) stopped its 32-bit Windows builds after JDK 19, and OpenJDK removed the
+32-bit Windows port in JDK 24, so 21 is the newest release Odin can run. Only BellSoft
+Liberica still builds it: `bellsoft-jdk21.0.13.0.3+5-windows-i586.zip`
+(SHA-1 `598b925cf01f596cb18e3b6607b7db4534218b89`). Set `JAVA17_HOME` to the unzipped JDK 21
+directory; everything else is the same. Needs Odin 0.9.1a3 (iphlpapi network interface
+functions, a few kernel32/advapi32 exports).
+
+Tested on 21.0.13: `java -version`, javac (1430 classes of java.util), hello/system/network
+tests, NIO (selector, file channels), HTTP server with 200 requests, TLS 1.3, Netty, Jetty,
+Swing/Java2D demo, benchmark. Not working: `AsynchronousSocketChannel` (as on 17) and `jshell`
+with its default remote execution engine (`jshell --execution local` works).
+
 ## Files here
-`java17.cmd` launcher, `odin.args` default options, `tools/impcheck.py` (static check of a Windows program's imports
-against Odin's exports), `probe\` (small Win32 test programs built with Open Watcom), `tools/os2delta.py` and
+`java17.cmd` launcher, `odin.args` default options, `impcheck.py` (static check of a Windows program's imports
+against Odin's exports), `probe\` (small Win32 test programs built with Open Watcom), `os2delta.py` and
 `os2-delta\` (what the OpenJDK 6 OS/2 port changed against jdk6-b27), test drivers in `..\..\..\OdinTests`.

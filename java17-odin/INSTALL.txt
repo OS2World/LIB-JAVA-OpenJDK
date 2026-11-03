@@ -1,15 +1,18 @@
-Java 17 on ArcaOS through Odin32  (release 17a1)
+Java 17 and 21 on ArcaOS through Odin32  (release 17a2: JDK 17 and JDK 21)
 ===========================================================
-Runs Temurin 17 (the 32 bit Windows build of OpenJDK 17) with Odin's PE loader.
+Runs Temurin 17 or BellSoft Liberica 21 (32 bit Windows builds of OpenJDK) with Odin's PE loader.
 
-1. Install Odin 0.9.1a2 or newer (Odin-0.9.1a2.zip: kernel32, ws2_32, shell32 ... and the new
-   POWRPROF, WINHTTP and MSWSOCK DLLs). Odin 0.9.0 and 0.9.1a1 will not start Java 17.
+1. Install Odin 0.9.1a3 or newer (Odin-0.9.1a3.zip: kernel32, ws2_32, shell32 ... and the new
+   POWRPROF, WINHTTP and MSWSOCK DLLs). Odin 0.9.0, 0.9.1a1 and 0.9.1a2 will not start Java 17/21 (0.9.1a2 runs only JDK 17).
 2. Download Temurin 17 x86-32 Windows: OpenJDK17U-jdk_x86-32_windows_hotspot_17.0.17_10.zip from adoptium.net
    (SHA-256 34ecb7e53b87ecb288be113ad1c76f3e55e7dc2f2b32427605e356feac95cb74) and unzip it, e.g. to C:\Java17.
+   Or, for Java 21 (Adoptium has no 32 bit Windows build of 21): BellSoft Liberica JDK 21, file
+   bellsoft-jdk21.0.13.0.3+5-windows-i586.zip from https://github.com/bell-sw/Liberica/releases
+   (SHA-1 598b925cf01f596cb18e3b6607b7db4534218b89), unzip e.g. to C:\Java21.
 3. Copy odin.args to <jdk>\conf\ .
 4. Put launcher\java.exe, javac.exe, jar.exe, keytool.exe in a directory in PATH (copy java.exe to
    jshell.exe, javadoc.exe, jlink.exe ... for the other JDK tools: the program name selects the tool).
-5. SET JAVA17_HOME=C:\Java17\jdk-17.0.17+10
+5. SET JAVA17_HOME=C:\Java17\jdk-17.0.17+10      (or C:\Java21\jdk-21.0.13.0.3 for Java 21)
    SET ODIN_DIR=<directory with pec.exe and the Odin DLLs, normally the Odin lib directory>
 6. java -version
    demo\run-demo.cmd           (Swing / Java2D showcase)
