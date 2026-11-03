@@ -1,0 +1,110 @@
+imports checked: 5966 missing: 85
+
+== advapi32: 4 missing (odin knows: yes)
+  AddAccessDeniedAceEx                     nio.dll
+  ConvertStringSecurityDescriptorToSecurityDescriptorA attach.dll
+  ConvertStringSidToSidW                   nio.dll
+  DuplicateTokenEx                         nio.dll
+
+== dbgeng: 1 missing (odin knows: NO SUCH DLL)
+  DebugCreate                              saproc.dll
+
+== iphlpapi: 1 missing (odin knows: yes)
+  if_nametoindex                           dt_socket.dll
+
+== kernel32: 42 missing (odin knows: yes)
+  CloseThreadpoolTimer                     msvcp140.dll
+  CloseThreadpoolWait                      msvcp140.dll
+  CreateEventExW                           msvcp140.dll
+  CreateSemaphoreExW                       msvcp140.dll
+  CreateSymbolicLinkW                      msvcp140.dll,nio.dll
+  CreateThreadpoolTimer                    msvcp140.dll
+  CreateThreadpoolWait                     msvcp140.dll
+  FindNextStreamW                          nio.dll
+  FlushProcessWriteBuffers                 msvcp140.dll
+  GetComputerNameExA                       jvm.dll
+  GetConsoleWindow                         java.dll
+  GetCurrentProcessorNumber                msvcp140.dll
+  GetDynamicTimeZoneInformation            java.dll
+  GetGeoInfoA                              java.dll
+  GetLargePageMinimum                      jvm.dll
+  GetNumaHighestNodeNumber                 jvm.dll
+  GetNumaNodeProcessorMask                 jvm.dll
+  GetProcessId                             java.dll
+  GetQueuedCompletionStatusEx              nio.dll
+  GetUserGeoID                             java.dll
+  GlobalMemoryStatusEx                     jvm.dll,management_ext.dll
+  HeapSize                                 javaaccessbridge-32.dll,javaaccessbridge.dll,ucrtbase.dll
+  IsThreadAFiber                           ucrtbase.dll
+  IsWow64Process                           attach.dll
+  K32EnumProcessModules                    jvm.dll
+  K32GetModuleFileNameExA                  jvm.dll
+  K32GetModuleInformation                  jvm.dll
+  K32GetProcessMemoryInfo                  jvm.dll
+  Process32First                           java.dll,jvm.dll
+  Process32Next                            java.dll,jvm.dll
+  ProcessIdToSessionId                     jabswitch.exe
+  ReOpenFile                               nio.dll
+  RtlCaptureStackBackTrace                 jvm.dll,msvcp140.dll
+  SetFileCompletionNotificationModes       nio.dll
+  SetFileInformationByHandle               java.dll,msvcp140.dll,nio.dll
+  SetThreadpoolTimer                       msvcp140.dll
+  SetThreadpoolWait                        msvcp140.dll
+  TzSpecificLocalTimeToSystemTime          ucrtbase.dll
+  VirtualAllocEx                           attach.dll
+  VirtualAllocExNuma                       jvm.dll
+  VirtualFreeEx                            attach.dll
+  WaitForThreadpoolTimerCallbacks          msvcp140.dll
+
+== mswsock: 1 missing (odin knows: NO SUCH DLL)
+  TransmitFile                             nio.dll
+
+== ncrypt: 8 missing (odin knows: NO SUCH DLL)
+  NCryptExportKey                          sunmscapi.dll
+  NCryptFreeObject                         sunmscapi.dll
+  NCryptGetProperty                        sunmscapi.dll
+  NCryptImportKey                          sunmscapi.dll
+  NCryptOpenStorageProvider                sunmscapi.dll
+  NCryptSignHash                           sunmscapi.dll
+  NCryptTranslateHandle                    sunmscapi.dll
+  NCryptVerifySignature                    sunmscapi.dll
+
+== ole32: 5 missing (odin knows: NO SUCH DLL)
+  CoInitialize                             jsound.dll
+  CoInitializeEx                           jsound.dll
+  CoUninitialize                           jsound.dll
+  IIDFromString                            jpackage.dll
+  StringFromGUID2                          jpackage.dll
+
+== oleaut32: 5 missing (odin knows: NO SUCH DLL)
+  SysAllocString                           awt.dll
+  SysAllocStringByteLen                    awt.dll
+  SysFreeString                            awt.dll
+  SysStringLen                             awt.dll
+  VariantClear                             awt.dll
+
+== powrprof: 1 missing (odin knows: NO SUCH DLL)
+  CallNtPowerInformation                   jvm.dll
+
+== winhttp: 3 missing (odin knows: NO SUCH DLL)
+  WinHttpGetIEProxyConfigForCurrentUser    net.dll
+  WinHttpGetProxyForUrl                    net.dll
+  WinHttpOpen                              net.dll
+
+== winscard: 10 missing (odin knows: NO SUCH DLL)
+  SCardBeginTransaction                    j2pcsc.dll
+  SCardConnectA                            j2pcsc.dll
+  SCardControl                             j2pcsc.dll
+  SCardDisconnect                          j2pcsc.dll
+  SCardEndTransaction                      j2pcsc.dll
+  SCardEstablishContext                    j2pcsc.dll
+  SCardGetStatusChangeA                    j2pcsc.dll
+  SCardListReadersA                        j2pcsc.dll
+  SCardStatusA                             j2pcsc.dll
+  SCardTransmit                            j2pcsc.dll
+
+== ws2_32: 4 missing (odin knows: yes)
+  freeaddrinfo                             dt_socket.dll,net.dll
+  getaddrinfo                              dt_socket.dll,net.dll
+  getnameinfo                              dt_socket.dll,net.dll
+  inet_pton                                dt_socket.dll
