@@ -42,12 +42,12 @@ OpenJDK 17 and 21 (modern Java) through Odin32
 
 The directories java17-odin and java21-odin contain the work to run a current OpenJDK on OS/2:
 instead of porting the JVM again, the 32 bit Windows build runs as a PE program under Odin32
-(Odin 0.9.1a3 or newer): Temurin 17.0.17 (java17-odin) or BellSoft Liberica 21 (java21-odin;
+(Odin 0.9.1a4 or newer): Temurin 17.0.17 (java17-odin) or BellSoft Liberica 21 (java21-odin;
 Adoptium has no 32 bit Windows build of 21, and OpenJDK removed that port in JDK 24, so 21 is the
 newest possible). Each directory has install notes (INSTALL.txt, README.md), a native OS/2
 launcher (launcher/java.c; copy the built exe under the name of any JDK tool), odin.args, a
 Java2D/Swing demo, test programs and the import checker (tools/impcheck.py). java17-odin also has
 the list of what the OpenJDK 6 OS/2 port changed against jdk6-b27 (tools/os2delta.py, os2-delta/),
 small Win32 probe programs and NATIVE-PORT-FEASIBILITY.md (notes about a native LX build of
-OpenJDK 17, not started). Binary packages: Java17-on-Odin_17-0-17b10a2.zip and
-Java21-on-Odin_21-0-13b5a1.zip.
+OpenJDK 17, not started). Binary packages: Java17-on-Odin_17-0-17b10a3.zip and
+Java21-on-Odin_21-0-13b5a2.zip.

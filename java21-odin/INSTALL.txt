@@ -1,8 +1,8 @@
-Java 21 on ArcaOS through Odin32  (release 21-0-13b5a1)
+Java 21 on ArcaOS through Odin32  (release 21-0-13b5a2)
 =======================================================
 Runs the 32 bit Windows build of OpenJDK with Odin's PE loader.
 
-1. Install Odin 0.9.1a3 or newer: unzip Odin-0.9.1a3.zip into the boot drive root (it contains the new POWRPROF, WINHTTP,
+1. Install Odin 0.9.1a4 or newer: unzip Odin-0.9.1a4.zip into the boot drive root (it contains the new POWRPROF, WINHTTP,
    MSWSOCK DLLs and the kernel32, ws2_32, iphlpapi ... updates).
 2. Download BellSoft Liberica JDK 21 for Windows x86 32-bit: bellsoft-jdk21.0.13.0.3+5-windows-i586.zip from
    https://github.com/bell-sw/Liberica/releases  (SHA-1 598b925cf01f596cb18e3b6607b7db4534218b89)

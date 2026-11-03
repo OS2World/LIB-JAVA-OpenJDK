@@ -1,8 +1,8 @@
-Java 17 on ArcaOS through Odin32  (release 17-0-17b10a2)
+Java 17 on ArcaOS through Odin32  (release 17-0-17b10a3)
 ========================================================
 Runs the 32 bit Windows build of OpenJDK with Odin's PE loader.
 
-1. Install Odin 0.9.1a3 or newer (0.9.1a2 also runs JDK 17): unzip Odin-0.9.1a3.zip into the boot drive root (it contains the new POWRPROF, WINHTTP,
+1. Install Odin 0.9.1a4 or newer: unzip Odin-0.9.1a4.zip into the boot drive root (it contains the new POWRPROF, WINHTTP,
    MSWSOCK DLLs and the kernel32, ws2_32, iphlpapi ... updates).
 2. Download Temurin 17 x86-32 Windows: OpenJDK17U-jdk_x86-32_windows_hotspot_17.0.17_10.zip from adoptium.net
    (SHA-256 34ecb7e53b87ecb288be113ad1c76f3e55e7dc2f2b32427605e356feac95cb74) and unzip it, e.g. to C:\Java17.
