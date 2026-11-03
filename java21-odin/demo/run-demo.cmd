@@ -1,0 +1,7 @@
+@echo off
+rem Java2D / Swing demo.  usage: run-demo [tab 0-4] [seconds until it closes itself]
+rem Needs JAVA21_HOME and ODIN_DIR set (see ..\INSTALL.txt) and the kit's launcher in PATH.
+if "%JAVA21_HOME%"=="" echo Set JAVA21_HOME first (see INSTALL.txt)& goto end
+if not exist Demo2D.class javac -d . Demo2D.java
+java -cp . Demo2D %1 %2
+:end

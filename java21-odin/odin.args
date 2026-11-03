@@ -1,0 +1,5 @@
+--add-exports=java.base/sun.nio.ch=ALL-UNNAMED
+-Djava.nio.channels.spi.SelectorProvider=sun.nio.ch.WindowsSelectorProvider
+-Dsun.java2d.d3d=false
+-Dsun.java2d.noddraw=true
+-Dsun.java2d.opengl=false

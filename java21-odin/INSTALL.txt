@@ -1,0 +1,20 @@
+Java 21 on ArcaOS through Odin32  (release 21-0-13b5a1)
+=======================================================
+Runs the 32 bit Windows build of OpenJDK with Odin's PE loader.
+
+1. Install Odin 0.9.1a3 or newer: unzip Odin-0.9.1a3.zip into the boot drive root (it contains the new POWRPROF, WINHTTP,
+   MSWSOCK DLLs and the kernel32, ws2_32, iphlpapi ... updates).
+2. Download BellSoft Liberica JDK 21 for Windows x86 32-bit: bellsoft-jdk21.0.13.0.3+5-windows-i586.zip from
+   https://github.com/bell-sw/Liberica/releases  (SHA-1 598b925cf01f596cb18e3b6607b7db4534218b89)
+   and unzip it, e.g. to C:\Java21.
+3. Copy odin.args to <jdk>\conf\ .
+4. Put launcher\java.exe, javac.exe, jar.exe, keytool.exe, jshell.exe in a directory in PATH (copy java.exe
+   to javadoc.exe, jlink.exe ... for the other JDK tools: the program name selects the tool).
+5. SET JAVA21_HOME=C:\Java21\jdk-21.0.13.0.3
+   SET ODIN_DIR=<directory with pec.exe and the Odin DLLs, normally the Odin lib directory>
+6. java -version
+   demo\run-demo.cmd           (Swing / Java2D showcase)
+
+Fonts: Java needs TrueType fonts in %SystemRoot%\Fonts (SystemRoot is the Odin directory, e.g. C:\ODINRT\Fonts).
+Heap: roughly 700 MB maximum with the default VIRTUALADDRESSLIMIT=1536 in CONFIG.SYS.
+Details, tested features and limits are in README.md.

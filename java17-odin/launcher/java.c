@@ -5,10 +5,11 @@
  * Because this is an LX program, arguments like -Dname=value reach Java unchanged
  * (CMD .cmd files split them at '=').
  *
- * Environment: JAVA17_HOME  JDK directory (default: parent of the directory of this exe,
- *                           if it holds bin\java.exe, else C:\Java17\jdk-17.0.17+10)
+ * Build with -DJVER=17 (default, env JAVA17_HOME) or -DJVER=21 (env JAVA21_HOME).
+ * Environment: JAVA<JVER>_HOME  JDK directory (default: parent of the directory of this exe,
+ *                           if it holds bin\java.exe, else the JDK_DEFAULT path below)
  *              ODIN_DIR     directory with pec.exe and the Odin DLLs (default C:\odinrt\b2)
- *              JAVA17_NOARGS  if set, conf\odin.args is not passed
+ *              JAVA<JVER>_NOARGS  if set, conf\odin.args is not passed
  */
 #define INCL_DOS
 #include <os2.h>
@@ -17,6 +18,18 @@
 #include <string.h>
 #include <process.h>
 #include <io.h>
+
+#ifndef JVER
+#define JVER 17
+#endif
+#define XSTR(x) STR(x)
+#define STR(x) #x
+#define HOME_VAR  "JAVA" XSTR(JVER) "_HOME"
+#if JVER == 21
+#define JDK_DEFAULT "C:\\Java21\\jdk-21.0.13.0.3"
+#else
+#define JDK_DEFAULT "C:\\Java17\\jdk-17.0.17+10"
+#endif
 
 static char *dup_(const char *s) { return strdup(s); }
 
@@ -56,7 +69,7 @@ int main(int argc, char **argv)
     strlwr(tool);
 
     /* JDK home */
-    e = getenv("JAVA17_HOME");
+    e = getenv(HOME_VAR);
     if (e && *e) {
         strcpy(home, e);
     } else {
@@ -72,11 +85,11 @@ int main(int argc, char **argv)
             }
         }
         sprintf(path, "%s\\bin\\java.exe", home);
-        if (!home[0] || !exists(path)) strcpy(home, "C:\\Java17\\jdk-17.0.17+10");
+        if (!home[0] || !exists(path)) strcpy(home, JDK_DEFAULT);
     }
     sprintf(path, "%s\\bin\\%s.exe", home, tool);
     if (!exists(path)) {
-        fprintf(stderr, "%s: %s not found (set JAVA17_HOME)\n", tool, path);
+        fprintf(stderr, "%s: %s not found (set " HOME_VAR ")\n", tool, path);
         return 2;
     }
 
@@ -98,7 +111,7 @@ int main(int argc, char **argv)
     sprintf(blp, "%s\\pec.exe", odin);
     av[n++] = dup_(blp);
     av[n++] = quote(path);
-    if (!stricmp(tool, "java") && !getenv("JAVA17_NOARGS")) {
+    if (!stricmp(tool, "java") && !getenv("JAVA" XSTR(JVER) "_NOARGS")) {
         sprintf(blp, "%s\\conf\\odin.args", home);
         if (exists(blp)) {
             char *a = (char *)malloc(strlen(blp) + 4);
